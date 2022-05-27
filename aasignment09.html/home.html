@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            box-sizing: border-box;
+           background-color: #000000;
+        }
+        .navbar{
+            background-color: #121212;
+            width: 98vw;
+            height: 11vh;
+            display: flex;
+
+
+                }
+                h1{
+                    font-size: 1.9vw;
+                    margin-top: 2.5vh;
+                    color: white;
+                    margin-left: 5vw ;
+                    cursor: pointer;
+
+                }
+                h1:hover{
+                    color: #ff8e06;
+                }
+                ul{
+                    display: flex;
+                    list-style: none;
+                    margin-left: 45vw;
+                }
+                ul a{
+                    text-decoration: none;
+                    color: white;
+
+                }
+                ul a li {
+                    margin-left: 8vw;
+                    margin-top: 2.9vh;
+                    font-size: 1.7vw;
+                    font-weight: 550;
+                }
+                ul a li:hover{
+                    color: #ff8e06;
+                }
+        
+
+                
+       
+        #container{
+          
+            width: 90vw;
+            height: auto;
+            border: 0.1vh solid  transparent;
+          
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-gap: 5vw;
+            margin-top:5vh;
+            margin-left: 5vw;
+           margin-bottom: 20vh;
+        }
+        .div{
+            width: 23vw;
+            min-height: 60vh;
+            border: 0.1vh solid transparent;
+            background-color: #121212;
+           border-radius: 1.1vw;
+            overflow: hidden;
+            box-shadow: 0px 0px 1px 1px  #121212;
+        }
+        .imgbox{
+            width: 23vw;
+           
+            border: 01.vh solid transparent;
+            border-radius: 1vw;
+            overflow: hidden;
+           height: 40vh;
+           -webkit-transition: 0.4s ease;
+  transition: 0.4s ease;
+        }
+        .imgbox:hover  {
+  -webkit-transform: scale(1.08);
+  transform: scale(1.08);
+}
+.div:hover  {
+  -webkit-transform: scale(1.08);
+  transform: scale(1.08);
+}
+        .img{
+            width: 100%;
+            height: 100%;
+        }
+        .title{
+            color: white;
+            font-size: 1.4vw;
+            font-weight: 550;
+            margin-top: 3vh;
+            margin-left: 2.6vh;
+
+        }
+        .dates{
+            color: white;
+            font-size: 1.4vw;
+            font-weight: 550;
+           
+            margin-left: 2.6vh;
+
+        }
+        .rate{
+            color: white;font-size: 1.4vw;
+            font-weight: 550;
+            margin-top: 1vh;
+            margin-left: 19vw;
+            margin-bottom: 3vh;
+        }
+        .inputbox{
+            width: 20vw;
+            height: 7vh;
+            outline: none;
+            border: none;
+            border: 0.5vh solid white;
+            border-radius: 2.5vw;
+           
+            color: white;
+            margin-left: 73vw;
+            background-color: black;
+            margin-top: 5vh;
+        }
+        #sort{
+            border: none;
+            outline: none;
+            border-bottom: 0.2vh solid #cecece;
+            width: 13vw;
+            height: 4vh;
+            margin: auto;
+            background-color: transparent;
+            margin-left: 4vh;
+            margin-top: 0.9vh;
+            color: white;
+        }
+        input::placeholder{
+            color: white;
+            font-size: 1.1vw;
+        }
+        .imgb{
+            margin: 0;
+            margin-top: -2vh;
+            margin-left: -3vw;
+            width: 94vw;
+            height: 80vh;
+        }
+        .im{
+            width: 100%;
+            height: 100%;
+        }
+        .reco{
+            width: 10vw;
+            height: 3vh;
+           
+            
+            color: white;
+            z-index: 1;
+            margin-top: -18.8vw;
+            margin-left: 1vh;
+        }
+        .recop{
+            color: white;
+            z-index: 1;
+            font-size: 1.4vw;
+            font-weight: 700;
+            text-decoration: underline;
+            
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>MOVIE APP</h1>
+        <ul>
+            <a href="login.html"><li>Login</li></a>
+            <a href="signup.html"><li>Sign up</li></a>
+        </ul>
+    </div>
+   <div class="inputbox"> <input type="text" id="sort" placeholder=" Search Movie ..." oninput="debounce(Events(event),1000)"></div>
+    <div id="container"></div>
+    <script>
+         
+           
+           var containetr = document.getElementById("container")
+           var array = [
+           {
+                   name: "Raw Beast",
+                   url: "https://m.media-amazon.com/images/M/MV5BOTIxZDRmYTgtYzU3YS00MTgwLTg2MTktMTM1ODcyNWQzMjM3XkEyXkFqcGdeQXVyMzY2NTg0NTA@._V1_QL75_UY266_CR4,0,180,266_.jpg"
+                   ,date:"2017"
+                   ,rate:9.7,
+               },
+               {
+                   name: "Cinema",
+                   url: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bW92aWV8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60"
+                   ,date:"2018"
+                   ,rate:9.3,
+               },
+               {
+                   name: "Raudi",
+                   url: "https://i.pinimg.com/236x/65/b8/a8/65b8a87716d167c8490d04b9891d0314.jpg"
+                   ,date:"2019"
+                   ,rate:9.1,
+               },
+               {
+                   name: "Harley Quinn & Joker",
+                   url: "https://images2.alphacoders.com/724/thumbbig-724132.webp"
+                   ,date:"2020"
+                   ,rate:9.9,
+               },
+               {
+                   name: "Movie -  Iron Man",
+                   url: "https://images5.alphacoders.com/329/thumbbig-329544.webp"
+                   ,date:"2021"
+                   ,rate:8.2,
+               },
+               {
+                   name: "Movie -  Suicide Squad",
+                   url: "https://images6.alphacoders.com/714/thumbbig-714381.webp"
+                   ,date:"2022"
+                   ,rate:8.1,
+               },
+               {
+                   name: "Movie -  Enter the Dragon",
+                   url: "https://images2.alphacoders.com/520/thumbbig-520923.webp"
+                   ,date:"2022"
+                   ,rate:10,
+               },
+               {
+                   name: " The Godfather ",
+                   url: "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY209_CR3,0,140,209_AL_.jpg"
+                   ,date:"1972"
+                   ,rate:9.2,
+               }
+               ,
+               {
+                   name: " Movie -  Dhoom 3 ",
+                   url: "https://images6.alphacoders.com/468/thumbbig-468202.webp"
+                   ,date:"2020"
+                   ,rate:9.1,
+               }
+               ,
+               {
+                   name: " Face off ",
+                   url: "https://images5.alphacoders.com/689/thumbbig-689398.webp"
+                   ,date:"2020"
+                   ,rate:8.2,
+               }
+               ,
+               {
+                   name: " The Shawshank Redemption",
+                   url: "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UY209_CR0,0,140,209_AL_.jpg"
+                   ,date:"1994"
+                   ,rate:9.3,
+               },
+               {
+                   name: " Schindler's List",
+                   url: "https://m.media-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX140_CR0,0,140,209_AL_.jpg"
+                   ,date:"1993"
+                   ,rate:9,
+               },
+               {
+                   name: "  Raging Bull",
+                   url: "https://m.media-amazon.com/images/M/MV5BYjRmODkzNDItMTNhNi00YjJlLTg0ZjAtODlhZTM0YzgzYThlXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_UY209_CR1,0,140,209_AL_.jpg"
+                   ,date:"1980"
+                   ,rate:8.2,
+               },
+               {
+                   name: "  Casablanca",
+                   url: "https://m.media-amazon.com/images/M/MV5BY2IzZGY2YmEtYzljNS00NTM5LTgwMzUtMzM1NjQ4NGI0OTk0XkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_UX140_CR0,0,140,209_AL_.jpg"
+                   ,date:"1980"
+                   ,rate:8.5,
+               },
+               {
+                   name: "   Citizen Kane ",
+                   url: "https://m.media-amazon.com/images/M/MV5BYjBiOTYxZWItMzdiZi00NjlkLWIzZTYtYmFhZjhiMTljOTdkXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX140_CR0,0,140,209_AL_.jpg"
+                   ,date:"1941"
+                   ,rate:8.3,
+               },
+               {
+                   name: "    Gone with the Wind ",
+                   url: "https://m.media-amazon.com/images/M/MV5BYjUyZWZkM2UtMzYxYy00ZmQ3LWFmZTQtOGE2YjBkNjA3YWZlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX140_CR0,0,140,209_AL_.jpg"
+                   ,date:"1939"
+                   ,rate:8.2,
+               },
+               {
+                   name: "  The Wizard of Oz ",
+                   url: "https://m.media-amazon.com/images/M/MV5BNjUyMTc4MDExMV5BMl5BanBnXkFtZTgwNDg0NDIwMjE@._V1_UY209_CR0,0,140,209_AL_.jpg"
+                   ,date:"1939"
+                   ,rate:8.1,
+               },
+               {
+                   name: "  One Flew Over the Cuckoo's Nest",
+                   url: "https://m.media-amazon.com/images/M/MV5BZjA0OWVhOTAtYWQxNi00YzNhLWI4ZjYtNjFjZTEyYjJlNDVlL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UY209_CR0,0,140,209_AL_.jpg"
+                   ,date:"1975"
+                   ,rate:8.7,
+               },
+               
+           ]
+           if(localStorage.getItem("movies")==null)
+           {
+              localStorage.setItem("movies",JSON.stringify([]))
+           }
+           localStorage.setItem("movies",JSON.stringify(array))
+           var datas = JSON.parse(localStorage.getItem("movies") )
+           console.log(datas)
+        //   print(datas)
+
+function Events(event)
+{
+    console.log("sdvknsf")
+    event.preventDefault();
+   containetr.innerHTML = ""
+        getData()
+    
+}
+// fetch Omdb Api
+let API_KEY = "a0c4f6ef";
+
+async function getData()
+{
+    var res = await fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${sort.value}`);
+    let data = await res.json();
+  console.log(data)
+  if(data.Search === undefined)
+  {
+      containetr.innerHTML = ""
+      let imgb= document.createElement('div')
+      let im= document.createElement('img')
+      imgb.setAttribute("class","imgb")
+      imgb.append(im)
+      im.setAttribute("class","im")
+      im.src = "https://media4.giphy.com/media/UoeaPqYrimha6rdTFV/giphy.gif"
+     containetr.append(imgb)
+     return
+  }
+  var tem = data.Search
+  console.log(tem)
+  print(tem)
+}
+
+
+          var sort = document.getElementById("sort")
+          function sorting()
+          {
+              var n = sort.value
+              if(n==2)
+              {
+                var tem =  array.sort( (a,b) => {
+                      return a.rate - b.rate
+                  })
+              }
+              else if (n==1)
+              {
+                var tem =  array.sort( (a,b) => {
+                      return b.rate - a.rate
+                  })
+              }
+              containetr.innerHTML = ""
+              print(tem)
+
+          }
+        
+          var r =0 
+           function print(data)
+           {
+               var dat=[]
+                  data.forEach(ele  => {
+                    async function getrate()
+{
+  
+                var ress = await fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&t=${ele.Title}`);
+     dat = await ress.json();
+     var ra = parseFloat(dat.imdbRating)
+     if(ra >8.5)
+     {
+        rate.innerHTML = dat.imdbRating + "*"
+       
+        imgbox.append(reco)
+        recop.innerHTML = "RCOMMENDED"
+        
+     }
+     else
+     rate.innerHTML = dat.imdbRating + "*"
+}
+ 
+  
+                   var div = document.createElement('div')
+                   div.setAttribute("class","div")
+                   var imgbox= document.createElement('div')
+                   var img  = document.createElement('img')
+                   img.src= ele.Poster;
+                   img.setAttribute('class',"img")
+                   imgbox.setAttribute("class","imgbox")
+                   imgbox.append(img)
+                   var title = document.createElement('p')
+                   title.setAttribute("class","title")
+                  title.innerHTML = ele.Title   
+                  var reco = document.createElement("div")
+                  reco.setAttribute("class","reco")
+        var recop = document.createElement('p')
+        recop.setAttribute("class","recop")
+        reco.append(recop)
+                  var dates = document.createElement('p')
+                  dates.innerHTML = "( " + ele.Year + " )"
+                   dates.setAttribute("class","dates")
+                  var rate = document.createElement('p')
+                  rate.setAttribute("class","rate")
+                 
+                  console.log(dat.imdbRating)
+                  div.append(imgbox,title,dates,rate)
+                  containetr.append(div)
+                  
+                   getrate()
+               });
+           }
+
+           let timer;
+
+   function debounce(Events,delay)
+   {
+       if(delay)
+       {
+           clearTimeout(timer)
+       }
+       timer = setTimeout(function()
+       {
+          Events(event)
+       },delay)
+   }
+
+
+
+    </script>
+
+
+
+</body>
+</html>
